@@ -1,0 +1,22 @@
+-- AlterTable
+ALTER TABLE "WorkOrder" ADD COLUMN     "causaRaiz" TEXT,
+ADD COLUMN     "comentariosEntrega" TEXT,
+ADD COLUMN     "diagnostico" TEXT,
+ADD COLUMN     "fechaValidacion" TIMESTAMP(3),
+ADD COLUMN     "validadoPorId" TEXT;
+
+-- CreateTable
+CREATE TABLE "Notification" (
+    "id" SERIAL NOT NULL,
+    "userId" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "message" TEXT NOT NULL,
+    "link" TEXT,
+    "isRead" BOOLEAN NOT NULL DEFAULT false,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Notification_pkey" PRIMARY KEY ("id")
+);
+
+-- AddForeignKey
+ALTER TABLE "Notification" ADD CONSTRAINT "Notification_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("iduser") ON DELETE RESTRICT ON UPDATE CASCADE;

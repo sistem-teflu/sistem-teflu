@@ -1,0 +1,196 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  iduser        String   @id @default(uuid())
+  nomina        String    @unique
+  name          String
+  apellidos     String
+  email         String?   @unique
+  numero        String?
+  puesto        String
+  departamento  String
+  password      String
+  status        Boolean  @default(true)
+  img           String?
+  roleId        Int
+  role          Role   @relation(fields: [roleId], references: [id])
+  cumple        DateTime?
+  date_create   DateTime @default(now())
+  date_delete   DateTime?
+  //Relaciones inversas
+  workOrdersCreated WorkOrder[] @relation("Solicitante")
+  workOrdersAssigned WorkOrder[] @relation("Mecanico")
+  toolingTechOrders      ToolingOrder[] @relation("ToolingTech")
+  toolingValidatorOrders ToolingOrder[] @relation("ToolingValidator")
+
+  notifications Notification[]
+}
+
+model Role {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique // Ej: "ADMIN", "SUPERVISOR"
+  users       User[]
+  permissions Permission[] // Un rol tiene muchos permisos
+}
+
+model Permission {
+  id        Int     @id @default(autoincrement())
+  roleId    Int
+  role      Role    @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  
+  module    String  // Ej: "OEE", "HERRAMENTALES"
+  
+  // Los 4 permisos básicos (CRUD)
+  canView   Boolean @default(false)
+  canCreate Boolean @default(false)
+  canEdit   Boolean @default(false)
+  canDelete Boolean @default(false)
+
+  // Evita duplicados: un rol solo puede tener una configuración por módulo
+  @@unique([roleId, module])
+}
+
+model Machine {
+  id        Int      @id @default(autoincrement())
+  code      String   @unique // Ej: D-236
+  process   String   // Ej: Doblado, Corte Laser (Antes era name)
+  
+  // Estado actual de la máquina
+  status    String   @default("DISPONIBLE") // DISPONIBLE, MANTENIMIENTO, CNP, ETC.
+  
+  // Soft Delete
+  isActive  Boolean  @default(true)
+  
+  // Datos extra
+  img       String?
+  operator  String?  // Nombre del operador (Placeholder para el futuro)
+
+  // Relaciones
+  workOrders WorkOrder[]
+}
+
+model WorkOrder {
+  id          Int      @id @default(autoincrement())
+  folio       Int      @default(autoincrement()) 
+
+  userId      String      
+  user        User     @relation("Solicitante", fields: [userId], references: [iduser])
+  
+  machineId   Int
+  machine     Machine  @relation(fields: [machineId], references: [id])
+  
+  date_create DateTime @default(now())
+  area        String   
+  turno       String   
+  
+  causaParo   Boolean  @default(false)
+  descripcion String
+  
+  status      String   @default("PENDIENTE") 
+  
+  tipoMantenimiento String? 
+  fechaInicio       DateTime?
+  fechaFin          DateTime?
+  
+  mechanicId        String?      
+  mechanic          User?    @relation("Mecanico", fields: [mechanicId], references: [iduser])
+  
+
+  diagnostico       String?   // Qué encontró
+  causaRaiz         String?   // Por qué falló
+  actividades       String?   // Qué hizo
+  refacciones       String?   // Qué cambió
+  
+  // Datos de Validación (Producción)
+  validadoPorId     String?   // Supervisor de Producción
+  fechaValidacion   DateTime?
+  comentariosEntrega String?
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  userId    String   // A quién va dirigida
+  user      User     @relation(fields: [userId], references: [iduser])
+  
+  title     String
+  message   String
+  link      String?  // A donde te lleva al dar click (ej: /mantenimiento/ordenes)
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+// --- CATALOGO DE HERRAMENTALES ---
+model Tooling {
+  id          Int      @id @default(autoincrement())
+  code        String   @unique // Ej: {D228-171.45-04}
+  description String   // Ej: D-228 MTD 63.5 X 50.8 MM REV. 1
+  isActive    Boolean  @default(true)
+  
+  // Historial
+  orders      ToolingOrder[]
+}
+
+// --- CATALOGO DE ACTIVIDADES (PLANTILLA) ---
+// Aquí guardas: "BOQUILLA: Revisar Boquilla", "MANDRIL...", etc.
+model ToolingActivity {
+  id          Int      @id @default(autoincrement())
+  component   String   // Ej: "BOQUILLA", "MANDRIL"
+  procedure   String   // El texto largo del procedimiento
+  isActive    Boolean  @default(true)
+}
+
+// --- ORDEN DE MANTENIMIENTO (EL FORMATO DIGITAL) ---
+model ToolingOrder {
+  id          Int      @id @default(autoincrement())
+  folio       Int      @default(autoincrement())
+  
+  toolingId   Int
+  tooling     Tooling  @relation(fields: [toolingId], references: [id])
+  
+  // Usuarios
+  technicianId String?  // Quien lo llena
+  technician   User?    @relation("ToolingTech", fields: [technicianId], references: [iduser])
+  
+  validatorId  String?  // Quien autoriza
+  validator    User?    @relation("ToolingValidator", fields: [validatorId], references: [iduser])
+
+  // Fechas y Estatus
+  date_create  DateTime @default(now())
+  date_finish  DateTime?
+  status       String   @default("ASIGNADA") // ASIGNADA, EN_PROCESO, POR_VALIDAR, CERRADA
+  
+  // Vida Útil
+  piezasProducidas Int? // Captura del cuadro "PIEZAS" del PDF
+
+  // Los resultados del checklist se guardan aquí
+  checks       ToolingCheck[]
+}
+
+// --- RESULTADOS DEL CHECKLIST ---
+model ToolingCheck {
+  id             Int          @id @default(autoincrement())
+  orderId        Int
+  order          ToolingOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  
+  component      String       // Se copia de la actividad al crear la orden
+  procedure      String
+  
+  status         String       @default("PENDIENTE") // OK, NOK, NA
+  comments       String?      // Observaciones
+  
+  // Evidencia foto (opcional futuro)
+  img            String?
+}
