@@ -67,3 +67,8 @@ export type ToolingOrder = Prisma.ToolingOrderModel
  * 
  */
 export type ToolingCheck = Prisma.ToolingCheckModel
+/**
+ * Model PushSubscription
+ * 
+ */
+export type PushSubscription = Prisma.PushSubscriptionModel

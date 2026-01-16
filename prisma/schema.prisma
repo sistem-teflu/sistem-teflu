@@ -37,6 +37,8 @@ model User {
   toolingValidatorOrders ToolingOrder[] @relation("ToolingValidator")
 
   notifications Notification[]
+
+  pushSubscriptions PushSubscription[]
 }
 
 model Role {
@@ -193,4 +195,17 @@ model ToolingCheck {
   
   // Evidencia foto (opcional futuro)
   img            String?
+}
+
+// Agrega este modelo
+model PushSubscription {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  user      User     @relation(fields: [userId], references: [iduser])
+  
+  endpoint  String   @unique // La URL única del navegador
+  p256dh    String   // Llaves de encriptación
+  auth      String
+  
+  createdAt DateTime @default(now())
 }

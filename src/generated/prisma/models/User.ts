@@ -302,6 +302,7 @@ export type UserWhereInput = {
   toolingTechOrders?: Prisma.ToolingOrderListRelationFilter
   toolingValidatorOrders?: Prisma.ToolingOrderListRelationFilter
   notifications?: Prisma.NotificationListRelationFilter
+  pushSubscriptions?: Prisma.PushSubscriptionListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -326,6 +327,7 @@ export type UserOrderByWithRelationInput = {
   toolingTechOrders?: Prisma.ToolingOrderOrderByRelationAggregateInput
   toolingValidatorOrders?: Prisma.ToolingOrderOrderByRelationAggregateInput
   notifications?: Prisma.NotificationOrderByRelationAggregateInput
+  pushSubscriptions?: Prisma.PushSubscriptionOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -353,6 +355,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   toolingTechOrders?: Prisma.ToolingOrderListRelationFilter
   toolingValidatorOrders?: Prisma.ToolingOrderListRelationFilter
   notifications?: Prisma.NotificationListRelationFilter
+  pushSubscriptions?: Prisma.PushSubscriptionListRelationFilter
 }, "iduser" | "nomina" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -420,6 +423,7 @@ export type UserCreateInput = {
   toolingTechOrders?: Prisma.ToolingOrderCreateNestedManyWithoutTechnicianInput
   toolingValidatorOrders?: Prisma.ToolingOrderCreateNestedManyWithoutValidatorInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  pushSubscriptions?: Prisma.PushSubscriptionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -443,6 +447,7 @@ export type UserUncheckedCreateInput = {
   toolingTechOrders?: Prisma.ToolingOrderUncheckedCreateNestedManyWithoutTechnicianInput
   toolingValidatorOrders?: Prisma.ToolingOrderUncheckedCreateNestedManyWithoutValidatorInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  pushSubscriptions?: Prisma.PushSubscriptionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -466,6 +471,7 @@ export type UserUpdateInput = {
   toolingTechOrders?: Prisma.ToolingOrderUpdateManyWithoutTechnicianNestedInput
   toolingValidatorOrders?: Prisma.ToolingOrderUpdateManyWithoutValidatorNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  pushSubscriptions?: Prisma.PushSubscriptionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -489,6 +495,7 @@ export type UserUncheckedUpdateInput = {
   toolingTechOrders?: Prisma.ToolingOrderUncheckedUpdateManyWithoutTechnicianNestedInput
   toolingValidatorOrders?: Prisma.ToolingOrderUncheckedUpdateManyWithoutValidatorNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  pushSubscriptions?: Prisma.PushSubscriptionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -772,6 +779,20 @@ export type UserUpdateOneWithoutToolingValidatorOrdersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutToolingValidatorOrdersInput, Prisma.UserUpdateWithoutToolingValidatorOrdersInput>, Prisma.UserUncheckedUpdateWithoutToolingValidatorOrdersInput>
 }
 
+export type UserCreateNestedOneWithoutPushSubscriptionsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPushSubscriptionsInput, Prisma.UserUncheckedCreateWithoutPushSubscriptionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPushSubscriptionsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutPushSubscriptionsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPushSubscriptionsInput, Prisma.UserUncheckedCreateWithoutPushSubscriptionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPushSubscriptionsInput
+  upsert?: Prisma.UserUpsertWithoutPushSubscriptionsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPushSubscriptionsInput, Prisma.UserUpdateWithoutPushSubscriptionsInput>, Prisma.UserUncheckedUpdateWithoutPushSubscriptionsInput>
+}
+
 export type UserCreateWithoutRoleInput = {
   iduser?: string
   nomina: string
@@ -792,6 +813,7 @@ export type UserCreateWithoutRoleInput = {
   toolingTechOrders?: Prisma.ToolingOrderCreateNestedManyWithoutTechnicianInput
   toolingValidatorOrders?: Prisma.ToolingOrderCreateNestedManyWithoutValidatorInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  pushSubscriptions?: Prisma.PushSubscriptionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRoleInput = {
@@ -814,6 +836,7 @@ export type UserUncheckedCreateWithoutRoleInput = {
   toolingTechOrders?: Prisma.ToolingOrderUncheckedCreateNestedManyWithoutTechnicianInput
   toolingValidatorOrders?: Prisma.ToolingOrderUncheckedCreateNestedManyWithoutValidatorInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  pushSubscriptions?: Prisma.PushSubscriptionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRoleInput = {
@@ -883,6 +906,7 @@ export type UserCreateWithoutWorkOrdersCreatedInput = {
   toolingTechOrders?: Prisma.ToolingOrderCreateNestedManyWithoutTechnicianInput
   toolingValidatorOrders?: Prisma.ToolingOrderCreateNestedManyWithoutValidatorInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  pushSubscriptions?: Prisma.PushSubscriptionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutWorkOrdersCreatedInput = {
@@ -905,6 +929,7 @@ export type UserUncheckedCreateWithoutWorkOrdersCreatedInput = {
   toolingTechOrders?: Prisma.ToolingOrderUncheckedCreateNestedManyWithoutTechnicianInput
   toolingValidatorOrders?: Prisma.ToolingOrderUncheckedCreateNestedManyWithoutValidatorInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  pushSubscriptions?: Prisma.PushSubscriptionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutWorkOrdersCreatedInput = {
@@ -932,6 +957,7 @@ export type UserCreateWithoutWorkOrdersAssignedInput = {
   toolingTechOrders?: Prisma.ToolingOrderCreateNestedManyWithoutTechnicianInput
   toolingValidatorOrders?: Prisma.ToolingOrderCreateNestedManyWithoutValidatorInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  pushSubscriptions?: Prisma.PushSubscriptionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutWorkOrdersAssignedInput = {
@@ -954,6 +980,7 @@ export type UserUncheckedCreateWithoutWorkOrdersAssignedInput = {
   toolingTechOrders?: Prisma.ToolingOrderUncheckedCreateNestedManyWithoutTechnicianInput
   toolingValidatorOrders?: Prisma.ToolingOrderUncheckedCreateNestedManyWithoutValidatorInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  pushSubscriptions?: Prisma.PushSubscriptionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutWorkOrdersAssignedInput = {
@@ -992,6 +1019,7 @@ export type UserUpdateWithoutWorkOrdersCreatedInput = {
   toolingTechOrders?: Prisma.ToolingOrderUpdateManyWithoutTechnicianNestedInput
   toolingValidatorOrders?: Prisma.ToolingOrderUpdateManyWithoutValidatorNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  pushSubscriptions?: Prisma.PushSubscriptionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWorkOrdersCreatedInput = {
@@ -1014,6 +1042,7 @@ export type UserUncheckedUpdateWithoutWorkOrdersCreatedInput = {
   toolingTechOrders?: Prisma.ToolingOrderUncheckedUpdateManyWithoutTechnicianNestedInput
   toolingValidatorOrders?: Prisma.ToolingOrderUncheckedUpdateManyWithoutValidatorNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  pushSubscriptions?: Prisma.PushSubscriptionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutWorkOrdersAssignedInput = {
@@ -1047,6 +1076,7 @@ export type UserUpdateWithoutWorkOrdersAssignedInput = {
   toolingTechOrders?: Prisma.ToolingOrderUpdateManyWithoutTechnicianNestedInput
   toolingValidatorOrders?: Prisma.ToolingOrderUpdateManyWithoutValidatorNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  pushSubscriptions?: Prisma.PushSubscriptionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWorkOrdersAssignedInput = {
@@ -1069,6 +1099,7 @@ export type UserUncheckedUpdateWithoutWorkOrdersAssignedInput = {
   toolingTechOrders?: Prisma.ToolingOrderUncheckedUpdateManyWithoutTechnicianNestedInput
   toolingValidatorOrders?: Prisma.ToolingOrderUncheckedUpdateManyWithoutValidatorNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  pushSubscriptions?: Prisma.PushSubscriptionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -1091,6 +1122,7 @@ export type UserCreateWithoutNotificationsInput = {
   workOrdersAssigned?: Prisma.WorkOrderCreateNestedManyWithoutMechanicInput
   toolingTechOrders?: Prisma.ToolingOrderCreateNestedManyWithoutTechnicianInput
   toolingValidatorOrders?: Prisma.ToolingOrderCreateNestedManyWithoutValidatorInput
+  pushSubscriptions?: Prisma.PushSubscriptionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -1113,6 +1145,7 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   workOrdersAssigned?: Prisma.WorkOrderUncheckedCreateNestedManyWithoutMechanicInput
   toolingTechOrders?: Prisma.ToolingOrderUncheckedCreateNestedManyWithoutTechnicianInput
   toolingValidatorOrders?: Prisma.ToolingOrderUncheckedCreateNestedManyWithoutValidatorInput
+  pushSubscriptions?: Prisma.PushSubscriptionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -1151,6 +1184,7 @@ export type UserUpdateWithoutNotificationsInput = {
   workOrdersAssigned?: Prisma.WorkOrderUpdateManyWithoutMechanicNestedInput
   toolingTechOrders?: Prisma.ToolingOrderUpdateManyWithoutTechnicianNestedInput
   toolingValidatorOrders?: Prisma.ToolingOrderUpdateManyWithoutValidatorNestedInput
+  pushSubscriptions?: Prisma.PushSubscriptionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -1173,6 +1207,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   workOrdersAssigned?: Prisma.WorkOrderUncheckedUpdateManyWithoutMechanicNestedInput
   toolingTechOrders?: Prisma.ToolingOrderUncheckedUpdateManyWithoutTechnicianNestedInput
   toolingValidatorOrders?: Prisma.ToolingOrderUncheckedUpdateManyWithoutValidatorNestedInput
+  pushSubscriptions?: Prisma.PushSubscriptionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutToolingTechOrdersInput = {
@@ -1195,6 +1230,7 @@ export type UserCreateWithoutToolingTechOrdersInput = {
   workOrdersAssigned?: Prisma.WorkOrderCreateNestedManyWithoutMechanicInput
   toolingValidatorOrders?: Prisma.ToolingOrderCreateNestedManyWithoutValidatorInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  pushSubscriptions?: Prisma.PushSubscriptionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutToolingTechOrdersInput = {
@@ -1217,6 +1253,7 @@ export type UserUncheckedCreateWithoutToolingTechOrdersInput = {
   workOrdersAssigned?: Prisma.WorkOrderUncheckedCreateNestedManyWithoutMechanicInput
   toolingValidatorOrders?: Prisma.ToolingOrderUncheckedCreateNestedManyWithoutValidatorInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  pushSubscriptions?: Prisma.PushSubscriptionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutToolingTechOrdersInput = {
@@ -1244,6 +1281,7 @@ export type UserCreateWithoutToolingValidatorOrdersInput = {
   workOrdersAssigned?: Prisma.WorkOrderCreateNestedManyWithoutMechanicInput
   toolingTechOrders?: Prisma.ToolingOrderCreateNestedManyWithoutTechnicianInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  pushSubscriptions?: Prisma.PushSubscriptionCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutToolingValidatorOrdersInput = {
@@ -1266,6 +1304,7 @@ export type UserUncheckedCreateWithoutToolingValidatorOrdersInput = {
   workOrdersAssigned?: Prisma.WorkOrderUncheckedCreateNestedManyWithoutMechanicInput
   toolingTechOrders?: Prisma.ToolingOrderUncheckedCreateNestedManyWithoutTechnicianInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  pushSubscriptions?: Prisma.PushSubscriptionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutToolingValidatorOrdersInput = {
@@ -1304,6 +1343,7 @@ export type UserUpdateWithoutToolingTechOrdersInput = {
   workOrdersAssigned?: Prisma.WorkOrderUpdateManyWithoutMechanicNestedInput
   toolingValidatorOrders?: Prisma.ToolingOrderUpdateManyWithoutValidatorNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  pushSubscriptions?: Prisma.PushSubscriptionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutToolingTechOrdersInput = {
@@ -1326,6 +1366,7 @@ export type UserUncheckedUpdateWithoutToolingTechOrdersInput = {
   workOrdersAssigned?: Prisma.WorkOrderUncheckedUpdateManyWithoutMechanicNestedInput
   toolingValidatorOrders?: Prisma.ToolingOrderUncheckedUpdateManyWithoutValidatorNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  pushSubscriptions?: Prisma.PushSubscriptionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutToolingValidatorOrdersInput = {
@@ -1359,6 +1400,7 @@ export type UserUpdateWithoutToolingValidatorOrdersInput = {
   workOrdersAssigned?: Prisma.WorkOrderUpdateManyWithoutMechanicNestedInput
   toolingTechOrders?: Prisma.ToolingOrderUpdateManyWithoutTechnicianNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  pushSubscriptions?: Prisma.PushSubscriptionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutToolingValidatorOrdersInput = {
@@ -1380,6 +1422,115 @@ export type UserUncheckedUpdateWithoutToolingValidatorOrdersInput = {
   workOrdersCreated?: Prisma.WorkOrderUncheckedUpdateManyWithoutUserNestedInput
   workOrdersAssigned?: Prisma.WorkOrderUncheckedUpdateManyWithoutMechanicNestedInput
   toolingTechOrders?: Prisma.ToolingOrderUncheckedUpdateManyWithoutTechnicianNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  pushSubscriptions?: Prisma.PushSubscriptionUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutPushSubscriptionsInput = {
+  iduser?: string
+  nomina: string
+  name: string
+  apellidos: string
+  email?: string | null
+  numero?: string | null
+  puesto: string
+  departamento: string
+  password: string
+  status?: boolean
+  img?: string | null
+  cumple?: Date | string | null
+  date_create?: Date | string
+  date_delete?: Date | string | null
+  role: Prisma.RoleCreateNestedOneWithoutUsersInput
+  workOrdersCreated?: Prisma.WorkOrderCreateNestedManyWithoutUserInput
+  workOrdersAssigned?: Prisma.WorkOrderCreateNestedManyWithoutMechanicInput
+  toolingTechOrders?: Prisma.ToolingOrderCreateNestedManyWithoutTechnicianInput
+  toolingValidatorOrders?: Prisma.ToolingOrderCreateNestedManyWithoutValidatorInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutPushSubscriptionsInput = {
+  iduser?: string
+  nomina: string
+  name: string
+  apellidos: string
+  email?: string | null
+  numero?: string | null
+  puesto: string
+  departamento: string
+  password: string
+  status?: boolean
+  img?: string | null
+  roleId: number
+  cumple?: Date | string | null
+  date_create?: Date | string
+  date_delete?: Date | string | null
+  workOrdersCreated?: Prisma.WorkOrderUncheckedCreateNestedManyWithoutUserInput
+  workOrdersAssigned?: Prisma.WorkOrderUncheckedCreateNestedManyWithoutMechanicInput
+  toolingTechOrders?: Prisma.ToolingOrderUncheckedCreateNestedManyWithoutTechnicianInput
+  toolingValidatorOrders?: Prisma.ToolingOrderUncheckedCreateNestedManyWithoutValidatorInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutPushSubscriptionsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPushSubscriptionsInput, Prisma.UserUncheckedCreateWithoutPushSubscriptionsInput>
+}
+
+export type UserUpsertWithoutPushSubscriptionsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPushSubscriptionsInput, Prisma.UserUncheckedUpdateWithoutPushSubscriptionsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPushSubscriptionsInput, Prisma.UserUncheckedCreateWithoutPushSubscriptionsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPushSubscriptionsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPushSubscriptionsInput, Prisma.UserUncheckedUpdateWithoutPushSubscriptionsInput>
+}
+
+export type UserUpdateWithoutPushSubscriptionsInput = {
+  iduser?: Prisma.StringFieldUpdateOperationsInput | string
+  nomina?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  numero?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  puesto?: Prisma.StringFieldUpdateOperationsInput | string
+  departamento?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  img?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cumple?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  date_create?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  date_delete?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
+  workOrdersCreated?: Prisma.WorkOrderUpdateManyWithoutUserNestedInput
+  workOrdersAssigned?: Prisma.WorkOrderUpdateManyWithoutMechanicNestedInput
+  toolingTechOrders?: Prisma.ToolingOrderUpdateManyWithoutTechnicianNestedInput
+  toolingValidatorOrders?: Prisma.ToolingOrderUpdateManyWithoutValidatorNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPushSubscriptionsInput = {
+  iduser?: Prisma.StringFieldUpdateOperationsInput | string
+  nomina?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  numero?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  puesto?: Prisma.StringFieldUpdateOperationsInput | string
+  departamento?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  img?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
+  cumple?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  date_create?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  date_delete?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  workOrdersCreated?: Prisma.WorkOrderUncheckedUpdateManyWithoutUserNestedInput
+  workOrdersAssigned?: Prisma.WorkOrderUncheckedUpdateManyWithoutMechanicNestedInput
+  toolingTechOrders?: Prisma.ToolingOrderUncheckedUpdateManyWithoutTechnicianNestedInput
+  toolingValidatorOrders?: Prisma.ToolingOrderUncheckedUpdateManyWithoutValidatorNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -1420,6 +1571,7 @@ export type UserUpdateWithoutRoleInput = {
   toolingTechOrders?: Prisma.ToolingOrderUpdateManyWithoutTechnicianNestedInput
   toolingValidatorOrders?: Prisma.ToolingOrderUpdateManyWithoutValidatorNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  pushSubscriptions?: Prisma.PushSubscriptionUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRoleInput = {
@@ -1442,6 +1594,7 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   toolingTechOrders?: Prisma.ToolingOrderUncheckedUpdateManyWithoutTechnicianNestedInput
   toolingValidatorOrders?: Prisma.ToolingOrderUncheckedUpdateManyWithoutValidatorNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  pushSubscriptions?: Prisma.PushSubscriptionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutRoleInput = {
@@ -1472,6 +1625,7 @@ export type UserCountOutputType = {
   toolingTechOrders: number
   toolingValidatorOrders: number
   notifications: number
+  pushSubscriptions: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1480,6 +1634,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   toolingTechOrders?: boolean | UserCountOutputTypeCountToolingTechOrdersArgs
   toolingValidatorOrders?: boolean | UserCountOutputTypeCountToolingValidatorOrdersArgs
   notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
+  pushSubscriptions?: boolean | UserCountOutputTypeCountPushSubscriptionsArgs
 }
 
 /**
@@ -1527,6 +1682,13 @@ export type UserCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Ty
   where?: Prisma.NotificationWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPushSubscriptionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PushSubscriptionWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   iduser?: boolean
@@ -1550,6 +1712,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   toolingTechOrders?: boolean | Prisma.User$toolingTechOrdersArgs<ExtArgs>
   toolingValidatorOrders?: boolean | Prisma.User$toolingValidatorOrdersArgs<ExtArgs>
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
+  pushSubscriptions?: boolean | Prisma.User$pushSubscriptionsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1617,6 +1780,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   toolingTechOrders?: boolean | Prisma.User$toolingTechOrdersArgs<ExtArgs>
   toolingValidatorOrders?: boolean | Prisma.User$toolingValidatorOrdersArgs<ExtArgs>
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
+  pushSubscriptions?: boolean | Prisma.User$pushSubscriptionsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1635,6 +1799,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     toolingTechOrders: Prisma.$ToolingOrderPayload<ExtArgs>[]
     toolingValidatorOrders: Prisma.$ToolingOrderPayload<ExtArgs>[]
     notifications: Prisma.$NotificationPayload<ExtArgs>[]
+    pushSubscriptions: Prisma.$PushSubscriptionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     iduser: string
@@ -2052,6 +2217,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   toolingTechOrders<T extends Prisma.User$toolingTechOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$toolingTechOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ToolingOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   toolingValidatorOrders<T extends Prisma.User$toolingValidatorOrdersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$toolingValidatorOrdersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ToolingOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   notifications<T extends Prisma.User$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  pushSubscriptions<T extends Prisma.User$pushSubscriptionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$pushSubscriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PushSubscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2609,6 +2775,30 @@ export type User$notificationsArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
+}
+
+/**
+ * User.pushSubscriptions
+ */
+export type User$pushSubscriptionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PushSubscription
+   */
+  select?: Prisma.PushSubscriptionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PushSubscription
+   */
+  omit?: Prisma.PushSubscriptionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PushSubscriptionInclude<ExtArgs> | null
+  where?: Prisma.PushSubscriptionWhereInput
+  orderBy?: Prisma.PushSubscriptionOrderByWithRelationInput | Prisma.PushSubscriptionOrderByWithRelationInput[]
+  cursor?: Prisma.PushSubscriptionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PushSubscriptionScalarFieldEnum | Prisma.PushSubscriptionScalarFieldEnum[]
 }
 
 /**

@@ -60,7 +60,8 @@ export const ModelName = {
   Tooling: 'Tooling',
   ToolingActivity: 'ToolingActivity',
   ToolingOrder: 'ToolingOrder',
-  ToolingCheck: 'ToolingCheck'
+  ToolingCheck: 'ToolingCheck',
+  PushSubscription: 'PushSubscription'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -220,6 +221,18 @@ export const ToolingCheckScalarFieldEnum = {
 } as const
 
 export type ToolingCheckScalarFieldEnum = (typeof ToolingCheckScalarFieldEnum)[keyof typeof ToolingCheckScalarFieldEnum]
+
+
+export const PushSubscriptionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  endpoint: 'endpoint',
+  p256dh: 'p256dh',
+  auth: 'auth',
+  createdAt: 'createdAt'
+} as const
+
+export type PushSubscriptionScalarFieldEnum = (typeof PushSubscriptionScalarFieldEnum)[keyof typeof PushSubscriptionScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -12,9 +12,8 @@ import {
 import { getSession } from "@/lib/auth"
 import { redirect } from "next/navigation"
 import { ModeToggle } from "@/components/mode-toggle"; 
-import { Button } from "@/components/ui/button";
-import { Bell } from "lucide-react";
 import { NotificationBell } from "@/components/layout/notification-bell"
+import { PushInitializer } from "@/components/layout/push-initializer";
 
 export default async function MainLayout({children,}: {children: React.ReactNode}) {
     const session = await getSession()
@@ -31,6 +30,7 @@ export default async function MainLayout({children,}: {children: React.ReactNode
 
     return (
         <SidebarProvider>
+            <PushInitializer /> 
             <AppSidebar user={user} />
             <SidebarInset className="relative flex flex-col h-screen overflow-hidden">
                 <header className="sticky top-0 z-10 flex h-16 shrink-0 items-center gap-2 border-b bg-background px-4 shadow-sm transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
